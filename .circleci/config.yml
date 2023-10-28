@@ -34,13 +34,13 @@ jobs:
           # app-dir: ~/project/package-directory/  # If your requirements.txt isn't in the root directory.
           pip-dependency-file: requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run: |
-        sudo apt-get update
+        sudo apt-get update \
         sudo apt-get install zopfli libcairo2-dev imagemagick -y
       - run: |
-        python3 -m venv venv
-        source venv/bin/activate
-        pip install -r requirements.txt
-        python size_check.py
+        python3 -m venv venv \
+        source venv/bin/activate \
+        pip install -r requirements.txt \
+        python size_check.py \
         make BYPASS_SEQUENCE_CHECK='True'
 
 # Invoke jobs via workflows
