@@ -34,20 +34,20 @@ jobs:
           # app-dir: ~/project/package-directory/  # If your requirements.txt isn't in the root directory.
           pip-dependency-file: requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
-        name: Install Dependencies
-        command: |
-          sudo apt-get update
-          sudo apt-get install zopfli libcairo2-dev imagemagick -y
+          name: Install Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install zopfli libcairo2-dev imagemagick -y
       - run:
-        name: Prepare Environment
-        command: |
-          python3 -m venv venv
-          source venv/bin/activate
-          pip install -r requirements.txt
-          python size_check.py
+          name: Prepare Environment
+          command: |
+            python3 -m venv venv
+            source venv/bin/activate
+            pip install -r requirements.txt
+            python size_check.py
       - run:
-        name: Build Font
-        command: make BYPASS_SEQUENCE_CHECK='True'
+          name: Build Font
+          command: make BYPASS_SEQUENCE_CHECK='True'
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
