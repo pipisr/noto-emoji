@@ -45,9 +45,19 @@ jobs:
             source venv/bin/activate
             pip install -r requirements.txt
             python size_check.py
+            ./generate_emoji_html.py -o index.html -d png/128 --all_emoji
+      # - run:
+      #     name: Build Font
+      #     command: make BYPASS_SEQUENCE_CHECK='True'
       - run:
-          name: Build Font
-          command: make BYPASS_SEQUENCE_CHECK='True'
+          name: Copy Artifacts
+          command: |
+            mkdir build
+            mv index.html build/
+            cp -r png build/
+            cp -r svg build/
+      - store_artifacts:
+          path: build
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows

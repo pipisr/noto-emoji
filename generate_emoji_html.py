@@ -305,7 +305,7 @@ def _get_image_data(image_dir, ext, prefix):
       fails.append('bad cp sequence: ' + filename)
       continue
     if cps in result:
-      fails.append('duplicate sequence: %s and %s' (result[cps], filename))
+      fails.append('duplicate sequence: %s and %s' % (result[cps], filename))
       continue
     result[cps] = filename
   if fails:
