@@ -54,7 +54,8 @@ jobs:
           command: |
             mkdir build
             mv index.html build/
-            cp -r png build/
+            mkdir -p build/png/128
+            cp png/128/* build/png/128
             cp -r svg build/
       - store_artifacts:
           path: build
